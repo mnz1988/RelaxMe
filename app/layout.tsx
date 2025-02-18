@@ -1,21 +1,13 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Inter } from "next/font/google";
 import "./globals.css";
 import Script from "next/script";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Relax Me!",
-  description: "Onchain Self Massage & Relaxing miniApp",
+  title: 'Telegram Mini App',
+  description: 'A simple Telegram Mini App using Next.js 14'
 };
 
 export default function RootLayout({
@@ -25,14 +17,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-    <head>
-      <Script src="https://telegram.org/js/telegram-web-app.js" strategy="beforeInteractive" />
-    </head>
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        {children}
-      </body>
+      <head>
+        <Script src="https://telegram.org/js/telegram-web-app.js" strategy="beforeInteractive" />
+      </head>
+      <body className={inter.className}>{children}</body>
     </html>
   );
 }
